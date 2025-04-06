@@ -35,12 +35,14 @@ function isNotValidInteger (value) {
 //建立 HTTP 伺服器的請求處理函式
 //這是一個 請求處理函式，根據 req.url（請求的網址）和 req.method（請求方法）來執行不同的 API 操作
 const requestListener = async (req, res) => {
+  //以下是api可跨網域請求，也可透過安裝 npm install cors express --save 
   const headers = {
     "Access-Control-Allow-Headers": "Content-Type, Authorization, Content-Length, X-Requested-With",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "PATCH, POST, GET,OPTIONS,DELETE",
     "Content-Type": "application/json"
   }
+  
   let body = ""
   req.on("data", (chunk) => {
     body += chunk
